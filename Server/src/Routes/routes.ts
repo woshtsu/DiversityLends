@@ -14,3 +14,9 @@ routerFA.get('/getAllPosts', ControllerFA.getAllPosts)
 routerFA.post('/create', ControllerFA.createUser)
 // Post para crear un avistamiento
 routerFA.post('/post', ControllerFA.postAvistamiento)
+
+/*
+  Falta añadir la insercion de categorias en la base de datos
+  falta actualizar los posts
+  Faltan varias cosas para checar
+*/
