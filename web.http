@@ -1,0 +1,22 @@
+GET http://localhost:1234/api
+###
+GET http://localhost:1234
+###
+GET http://localhost:1234/api/initializeSeed
+###
+### METODO PARA LLAMAR A TODOS LOS AVISTAMIENTOS
+GET http://localhost:1234/api/getAllPosts
+### METODO PARA CREAR UN USUARIO
+POST http://localhost:1234/api/create
+Content-Type: application/json
+
+{
+    "nombre": "Pablo Ore Campos",
+    "lastName": "Perez",
+    "email": "un email",
+    "correo": "76659572@continental.edu.pe",
+    "titulo_biologico": "0x123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF"
+}
+
+### METODO PARA POSTEAR UN AVISTAMIENTO
+GET http://localhost:1234/api/post
