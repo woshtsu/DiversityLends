@@ -1,7 +1,7 @@
 GET http://localhost:1234/api
 ###
 GET http://localhost:1234
-###
+### METODO PARA CREAR LAS TABLAS
 GET http://localhost:1234/api/initializeSeed
 ###
 ### METODO PARA LLAMAR A TODOS LOS AVISTAMIENTOS
@@ -10,13 +10,18 @@ GET http://localhost:1234/api/getAllPosts
 POST http://localhost:1234/api/create
 Content-Type: application/json
 
-{
+{   
+    "sql": "delete * from usuarios",
     "nombre": "Pablo Ore Campos",
     "lastName": "Perez",
     "email": "un email",
-    "correo": "76659572@continental.edu.pe",
-    "titulo_biologico": "0x123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF"
+    "correo": "correo@gmail.edu",
+    "titulo_biologico": "0x123456789ABCDE10153456789ABCDEF",
+    "contraseña": "qwerty1234"
 }
 
 ### METODO PARA POSTEAR UN AVISTAMIENTO
 GET http://localhost:1234/api/post
+
+### Metodo para actualizar una tabla de la base de datos
+GET http://localhost:1234/api/updateTables
