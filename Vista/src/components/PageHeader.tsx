@@ -1,17 +1,24 @@
-import React from 'react';
 import { Breadcrumb } from './Breadcrumb.tsx'; // Asegúrate de que la ruta sea correcta
+import { NavBar } from './NavBar.tsx';
 
-export const PageHeader: React.FC = () => {
+export const PageHeader = () => {
   const breadcrumbItems = [
     { label: 'Mercados', href: '#' },
     { label: 'Criptomonedas', href: '#' },
-    { label: 'Bitcoin' }, // Último elemento sin enlace
+    { label: 'Bitcoin' }
   ];
+  const navItems = [
+    { label: 'Métricas', href: 'metricas' },
+    { label: 'Noticias', href: 'noticias' },
+    { label: 'Pronóstico', href: 'pronostico' },
+    { label: 'Foro', href: 'foro' },
+    { label: 'Foro Académico', href: 'foro-academico' },
+    { label: 'Ubicación', href: 'ubicacion' }
+  ]
 
   return (
-    <header className="w-full bg-white p-4 shadow-md">
-      <div className="container mx-auto">
-        {/* Breadcrumb */}
+    <header className="flex flex-col w-full">
+      <div className="container mx-auto p-6 self-start">
         <Breadcrumb items={breadcrumbItems} />
 
         <div className="flex items-center mt-4">
@@ -61,6 +68,7 @@ export const PageHeader: React.FC = () => {
           </div>
         </div>
       </div>
+      <NavBar items={navItems} />
     </header>
   );
 };

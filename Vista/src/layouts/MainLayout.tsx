@@ -1,17 +1,14 @@
 import { Header } from '../components/MainHeader.tsx'
 import { MainFooter } from '../components/MainFooter.tsx'
-import type { ReactNode } from 'react'
+import { Outlet } from 'react-router-dom'
 
-type LayoutProps = {
-  children: ReactNode;
-}
 
-export function MainLayout({ children }: LayoutProps) {
+export function MainLayout() {
   return (
-    <section>
+    <>
       <Header />
-      {children}
+      <Outlet />
       <MainFooter />
-    </section>
+    </>
   )
 }
