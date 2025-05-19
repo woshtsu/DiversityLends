@@ -24,7 +24,8 @@ export class ModelFA {
     const query = `
     SELECT * FROM avistamientos;
     `;
-    const result = db.prepare(query).all();
+    // Aqui se deberia crear un schema type para result con el tipo de dato que devuelven los posts
+    const result: object = db.prepare(query).all();
     return JSON.stringify(result);
   }
 
@@ -60,7 +61,6 @@ export class ModelFA {
   }
   static seedDB = (): string => {
     const query = `
-      BEGIN TRANSACTION;
       CREATE TABLE IF NOT EXISTS usuarios (
         usuario_id INTEGER PRIMARY KEY AUTOINCREMENT,
         nombre TEXT,
@@ -99,9 +99,22 @@ export class ModelFA {
         foreign key (ubicacion_id) references ubicaciones (ubicacion_id),
         foreign key (especie_id) references especies (especie_id)
       );
-      COMMIT;
+
+      insert into categorias (categoria_id, nombre) values (1,'Animalia'),(2,'Plantae');
+      insert into especies (nombre_cientifico, nombre_comun, familia, categoria_id) values ('Acer','Pino','Aceraceae',2),('Lycalopex culpaeus','Zorro Andino','Cánido',1);
+      insert into ubicaciones (nombre, latitud, longitud) values ('Parque Grau','-12.050451','-75.196454'),('Palcamayo','-11.232055','-75.805103');
+      insert into usuarios (nombre, correo, titulo_biologico, contraseña) values ('admin','-----','-----','admin');
     `;
-    db.exec(query);
+
+    const runTransaction = db.transaction((query) => {
+      db.exec(query)
+    })
+    try {
+      runTransaction(query)
+    } catch (error: any) {
+      console.error('Error al ejecutar la query de seed:', error)
+      return error.toString()
+    }
     return 'Se ejecuto la query de seed'
   }
 }

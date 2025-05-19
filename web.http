@@ -21,7 +21,31 @@ Content-Type: application/json
 }
 
 ### METODO PARA POSTEAR UN AVISTAMIENTO
-GET http://localhost:1234/api/post
+POST http://localhost:1234/api/post
+Content-Type: application/json
 
+{
+    "nombre": "admin",
+    "ubicacion": {
+        "latitud": "-12.3456789",
+        "longitud": "12.3456789"
+    },
+    "especie": {
+        "nombre": "pez",
+        "familia": "pez"
+    },
+    "descripcion": "En el rio vi un pez",
+    "id_usuario": "1"
+}
+
+### comentario
+{
+    "usuario_id": "1",
+    "ubicacion_id": "1",
+    "especie_id": "1",
+    "descripcion": "En el rio vi un pez",
+    "fecha": "2023-03-22 12:34:56"
+}
+con Date.now() en la fecha se obtiene un number pero basta con convertirlo a string
 ### Metodo para actualizar una tabla de la base de datos
 GET http://localhost:1234/api/updateTables
