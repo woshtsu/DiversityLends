@@ -1,7 +1,8 @@
+import { MainPage } from "./pages/MainPage"
 function App() {
   return (
     <section>
-      <h1>Hello World</h1>
+      <MainPage />
     </section>
   )
 }
