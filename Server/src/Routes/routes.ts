@@ -10,6 +10,11 @@ routerFA.get('/', (req, res) => {
 routerFA.get('/initializeSeed', ControllerFA.generateSeed)
 // Get para obtener todos los posts
 routerFA.get('/getAllPosts', ControllerFA.getAllPosts)
+
+routerFA.get('/getUsers', ControllerFA.getUsers)
+
+routerFA.get('/getAllspecies', ControllerFA.getAllspecies)
+
 // Post para crear un usuario
 routerFA.post('/create', ControllerFA.createUser)
 // Post para crear un avistamiento

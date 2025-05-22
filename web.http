@@ -1,9 +1,11 @@
 GET http://localhost:1234/api
 ###
-GET http://localhost:1234
+GET http://localhost:1234/api/getUsers
 ### METODO PARA CREAR LAS TABLAS
 GET http://localhost:1234/api/initializeSeed
 ###
+### METODO PARA LLAMAR A TODOS LAS ESPECIES
+GET http://localhost:1234/api/getAllspecies
 ### METODO PARA LLAMAR A TODOS LOS AVISTAMIENTOS
 GET http://localhost:1234/api/getAllPosts
 ### METODO PARA CREAR UN USUARIO

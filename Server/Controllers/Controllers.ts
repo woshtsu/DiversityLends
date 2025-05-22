@@ -1,10 +1,15 @@
 import { Request, Response } from 'express'
 import { ModelFA } from '../Models/sqlite/Model.js'
+// import { ModelFA } from '../Models/sqlserver/Model.js'
 import { validateUser } from '../src/Utils/Schemas.js'
 
 type Handler = (req: Request, res: Response) => void
 
 export class ControllerFA {
+  static getAllspecies: Handler = async (req, res) => {
+    const result = await ModelFA.getAllspecies()
+    res.send(result)
+  }
   static generateSeed: Handler = async (req, res) => {
     const result = await ModelFA.seedDB()
     res.send(result)
@@ -29,6 +34,10 @@ export class ControllerFA {
   }
   static updateTables: Handler = async (req, res) => {
     const result = await ModelFA.updateTables()
+    res.send(result)
+  }
+  static getUsers: Handler = async (req, res) => {
+    const result = await ModelFA.getUsers()
     res.send(result)
   }
 }

@@ -6,7 +6,7 @@ export function PageLayout() {
   return (
     <section>
       <PageHeader />
-      <div className="w-full min-h-screen flex flex-col p-4">
+      <div className="flex flex-col">
         <Outlet />
       </div>
     </section>
