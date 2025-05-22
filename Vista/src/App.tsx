@@ -1,34 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { ForoAcademico } from "./pages/ForoAcademico"
+import { MainLayout } from "./layouts/MainLayout"
+import { PageLayout } from "./layouts/PageLayout"
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <section>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/page/metricas" />} />
+
+
+          <Route path="/page" element={<MainLayout />}>
+            <Route path="" element={<PageLayout />}>
+              <Route path="metricas" element={<h1 className="text-9xl">Proximamente metricas</h1>} />
+              <Route path="noticias" element={<h1 className="text-9xl">Proximamente noticias</h1>} />
+              <Route path="pronostico" element={<h1 className="text-9xl">Proximamente pronostico</h1>} />
+              <Route path="foro" element={<h1 className="text-9xl">Proximamente Foro</h1>} />
+              <Route path="foro-academico" element={<ForoAcademico />} />
+              <Route path="ubicacion" element={<h1 className="text-9xl">Proximamente Ubicacion</h1>} />
+            </Route>
+
+            <Route path="about" element={<h1>Sobre nosotros</h1>} />
+            <Route path="contact" element={<p>Hola</p>} />
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
+    </section>
   )
 }
 
