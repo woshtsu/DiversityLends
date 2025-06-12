@@ -64,7 +64,6 @@ export const NavBar: React.FC<NavBarProps> = ({
       {/* Iconos de la derecha y botón */}
       <div className="ml-auto flex items-center gap-4">
         {/* Placeholder para icono de usuario */}
-        <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 
         {/* Botón "Iniciar Sesion" */}
         {isButton && <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md">

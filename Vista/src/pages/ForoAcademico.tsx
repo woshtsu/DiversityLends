@@ -1,20 +1,21 @@
 import { Breadcrumb } from "../components/Breadcrumb"
+import { FormPost } from "../components/FormPost";
 
 
 export const ForoAcademico = () => {
   const breadcrumbItems = [
     { label: 'Home', href: '#' },
     { label: 'Foro Académico', href: '#' },
-    { label: 'Posts' }, // Último elemento sin enlace
+    { label: 'Posts' },
   ];
   return (
-    <div className="flex flex-col w-full h-svh">
-      <div className="self-start">
-        <Breadcrumb items={breadcrumbItems}></Breadcrumb>
+    <div className="flex flex-col h-screen">
+      <div className="bg-blue-200 p-4">
+        <Breadcrumb items={breadcrumbItems} />
       </div>
-      <div className="flex flex-col h-full items-center bg-[url(../../public/bg/bg_foro.webp)] bg-no-repeat bg-cover">
-        <h1>Foro Academico</h1>
-        <p>Foro academico para estudiantes de la Universidad de La Sabana</p>
+
+      <div className="bg-gray-200 flex-1 p-4 overflow-y-auto">
+        <FormPost/>
       </div>
     </div>
   )

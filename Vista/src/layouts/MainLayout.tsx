@@ -7,7 +7,7 @@ export function MainLayout() {
   return (
     <>
       <Header />
-      <div className="w-full min-h-screen flex flex-col p-4 bg-[#dbb95f]">
+      <div className="w-full min-h-screen flex flex-col p-4">
       <Outlet />
       </div>
       <MainFooter />
