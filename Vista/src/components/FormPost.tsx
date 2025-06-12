@@ -37,11 +37,11 @@ export function FormPost(){
             </div>
   
             <div className="flex justify-between pt-2">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 active:bg-blue-700">
                 Enviar Comentario
               </button>
-              <button className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
-                Ver Comentarios
+              <button className="bg-gray-300 text-gray-800 px-4 py-2 rounded cursor-pointer hover:bg-gray-400 active:bg-cyan-600-700">
+                Ver Posts
               </button>
             </div>
           </div>
