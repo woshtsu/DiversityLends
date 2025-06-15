@@ -21,6 +21,16 @@ Content-Type: application/json
     "titulo_biologico": "0x123456789ABCDE10153456789ABCDEF",
     "contraseña": "qwerty1234"
 }
+### METODO PARA validar UN USUARIO
+POST http://localhost:1234/api/validar
+Content-Type: application/json
+
+{   
+    "correo": "ana@example.com",
+    "contraseña": "password"
+}
+### METODO PARA obtener unfo UN USUARIO
+GET http://localhost:1234/api/getuserdata/admin@example.com
 
 ### METODO PARA POSTEAR UN AVISTAMIENTO
 POST http://localhost:1234/api/post

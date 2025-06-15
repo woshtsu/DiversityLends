@@ -2,7 +2,7 @@ import { Breadcrumb } from "../components/Breadcrumb"
 import { FormPost } from "../components/FormPost";
 
 
-export const ForoAcademico = () => {
+export const ForoAcademico = ({ value, paraShared }: { value: boolean, paraShared: string }) => {
   const breadcrumbItems = [
     { label: 'Home', href: '#' },
     { label: 'Foro Académico', href: '#' },
@@ -15,7 +15,7 @@ export const ForoAcademico = () => {
       </div>
 
       <div className="bg-gray-200 flex-1 p-4 overflow-y-auto">
-        <FormPost/>
+        <FormPost value={value} correoShared={paraShared} />
       </div>
     </div>
   )

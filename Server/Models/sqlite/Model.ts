@@ -3,7 +3,27 @@ import type { typeuserSchema } from '../../src/Utils/Schemas.js'
 
 const db = new Database('app.db')
 
+type getInfoUserTypes = {
+  correo: string
+}
+
 export class ModelFA {
+  static getInfoUser = async ({ data }: { data: getInfoUserTypes }) => {
+    const query = `
+      select * from usuarios where correo = ?
+    `
+    const result = db.prepare(query).get(data.correo)
+    return JSON.stringify(result)
+  }
+
+  static validateLogin = async ({ data }: { data: typeuserSchema }): Promise<string> => {
+    const query = `
+    Select 1 from usuarios where correo = ? and contraseña = ?
+    `
+    const result = db.prepare(query).get(data.correo, data.contraseña)
+    return JSON.stringify({ isRegister: result != undefined })
+  }
+
   static getAllspecies = async (): Promise<string> => {
     const query = `
     SELECT * FROM especies;
@@ -18,7 +38,7 @@ export class ModelFA {
     const result: object = db.prepare(query).all();
     return JSON.stringify(result);
   }
-  
+
   static updateTables = (): string => {
     const query = `
     BEGIN TRANSACTION;

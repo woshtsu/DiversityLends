@@ -1,12 +1,4 @@
-import zod, { ZodError } from 'zod'
-
-export interface typeuserSchema {
-  nombre: string
-  correo: string
-  titulo_biologico: string
-  contraseña: string
-}
-
+import zod from 'zod'
 
 export const userSchema = zod.object({
   nombre: zod.string(),
@@ -14,6 +6,15 @@ export const userSchema = zod.object({
   titulo_biologico: zod.string(),
   contraseña: zod.string()
 })
-export function validateUser({ input }: { input: typeuserSchema }): Promise<zod.SafeParseReturnType<typeuserSchema, typeuserSchema>> {
+
+export type typeuserSchema = zod.infer<typeof userSchema>
+
+const partialUserSchema = userSchema.partial()
+
+export async function validateUser({ input }: { input: typeuserSchema }): Promise<zod.SafeParseReturnType<typeuserSchema, typeuserSchema>> {
   return userSchema.safeParseAsync(input)
+}
+
+export async function validatePartialUser({ input }: { input: Partial<typeuserSchema> }) {
+  return partialUserSchema.safeParseAsync(input)
 }

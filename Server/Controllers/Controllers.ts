@@ -1,11 +1,24 @@
 import { Request, Response } from 'express'
 import { ModelFA } from '../Models/sqlite/Model.js'
 // import { ModelFA } from '../Models/sqlserver/Model.js'
-import { validateUser } from '../src/Utils/Schemas.js'
+import { validatePartialUser, validateUser } from '../src/Utils/Schemas.js'
 
 type Handler = (req: Request, res: Response) => void
 
 export class ControllerFA {
+  static getInfoUser: Handler = async (req, res) => {
+    console.log(req.params.correo, typeof req.params)
+    const result = await ModelFA.getInfoUser({ data: req.params })
+    res.send(result)
+  }
+  static validateLogin: Handler = async (req, res) => {
+    const filtro = await validatePartialUser({ input: req.body })
+    if (!filtro.success) {
+      return res.status(400).send("Error de Validacion")
+    }
+    const result = await ModelFA.validateLogin({ data: req.body })
+    res.send(result)
+  }
   static getAllspecies: Handler = async (req, res) => {
     const result = await ModelFA.getAllspecies()
     res.send(result)
