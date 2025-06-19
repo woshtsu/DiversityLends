@@ -1,63 +1,27 @@
-GET http://localhost:1234/api
-###
-GET http://localhost:1234/api/getUsers
-### METODO PARA CREAR LAS TABLAS
+// RUTAS PARA INICIALIZAR SQLITE
 GET http://localhost:1234/api/initializeSeed
-###
-### METODO PARA LLAMAR A TODOS LAS ESPECIES
-GET http://localhost:1234/api/getAllspecies
-### METODO PARA LLAMAR A TODOS LOS AVISTAMIENTOS
-GET http://localhost:1234/api/getAllPosts
-### METODO PARA CREAR UN USUARIO
-POST http://localhost:1234/api/create
-Content-Type: application/json
 
-{   
-    "sql": "delete * from usuarios",
-    "nombre": "Pablo Ore Campos",
-    "lastName": "Perez",
-    "email": "un email",
-    "correo": "correo@gmail.edu",
-    "titulo_biologico": "0x123456789ABCDE10153456789ABCDEF",
-    "contraseña": "qwerty1234"
-}
-### METODO PARA validar UN USUARIO
+###
+// RUTA PARA PROBAR EL SERVIDOR
+GET http://localhost:1234/api/
+
+###
+// Peticion para conseguir informacion de usuario
+GET http://localhost:1234/api/getuserdata/admin@example.com
+###
+/// PETICION PARA OBTENER LAS ESPECIES
+GET http://localhost:1234/api/getAllspecies
+
+###
+/// POST PARA VALIDAR USUARIO INICIO DE SESION
 POST http://localhost:1234/api/validar
 Content-Type: application/json
 
-{   
-    "correo": "ana@example.com",
-    "contraseña": "password"
-}
-### METODO PARA obtener unfo UN USUARIO
-GET http://localhost:1234/api/getuserdata/admin@example.com
+    {
+      "correo": "admin@example.com",
+      "contraseña": "admin"
+    }
 
-### METODO PARA POSTEAR UN AVISTAMIENTO
-POST http://localhost:1234/api/post
-Content-Type: application/json
-
-{
-    "nombre": "admin",
-    "ubicacion": {
-        "latitud": "-12.3456789",
-        "longitud": "12.3456789"
-    },
-    "especie": {
-        "nombre": "pez",
-        "familia": "pez"
-    },
-    "descripcion": "En el rio vi un pez",
-    "id_usuario": "1"
-}
-
-### comentario
-{
-    "usuario_id": "1",
-    "ubicacion_id": "1",
-    "especie_id": "1",
-    "descripcion": "En el rio vi un pez",
-    "fecha": "2023-03-22 12:34:56"
-}
-con Date.now() en la fecha se obtiene un number pero basta con convertirlo a string
-### Metodo para actualizar una tabla de la base de datos
-GET http://localhost:1234/api/updateTables
+###
+/// GET PARA OBTENER TODOS LOS AVISTAMIENTOS
+GET http://localhost:1234/api/getAllPosts

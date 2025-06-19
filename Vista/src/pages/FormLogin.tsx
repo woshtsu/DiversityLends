@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 type ResTypes = {
-  isRegister: boolean
+  esUsuario: boolean
 }
 
 type ParamsTypes = {
@@ -45,7 +45,7 @@ export const FormLogin: React.FC<ParamsTypes> = ({ value, seter, params }) => {
 
       // Axios ya parsea el JSON automáticamente si es válido
       const data: ResTypes = response.data;
-      seter(data.isRegister)
+      seter(data.esUsuario)
       if (value) params.func(correo)
 
     } catch (error) {

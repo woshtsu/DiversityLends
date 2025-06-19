@@ -1,67 +1,55 @@
 import Database from 'better-sqlite3'
-import type { typeuserSchema } from '../../src/Utils/Schemas.js'
+import type { TypeAvistamientos, TypeResponseGetUsuario, TypeSpecies, typeuserSchema } from '../../src/Utils/Schemas.js'
+
 
 const db = new Database('app.db')
 
-type getInfoUserTypes = {
-  correo: string
-}
+
 
 export class ModelFA {
-  static getInfoUser = async ({ data }: { data: getInfoUserTypes }) => {
+  
+  // obtener informacion de usuario por correo
+  static getInfoUser = async ({ data }: { data: string }):Promise<TypeResponseGetUsuario> => {
     const query = `
       select * from usuarios where correo = ?
     `
-    const result = db.prepare(query).get(data.correo)
-    return JSON.stringify(result)
+    return db.prepare(query).get(data) as TypeResponseGetUsuario
   }
 
-  static validateLogin = async ({ data }: { data: typeuserSchema }): Promise<string> => {
-    const query = `
-    Select 1 from usuarios where correo = ? and contraseña = ?
-    `
-    const result = db.prepare(query).get(data.correo, data.contraseña)
-    return JSON.stringify({ isRegister: result != undefined })
-  }
-
-  static getAllspecies = async (): Promise<string> => {
+  
+  static getAllspecies = async () => {
     const query = `
     SELECT * FROM especies;
     `;
-    const result: object = db.prepare(query).all();
-    return JSON.stringify(result);
+    const result = db.prepare(query).all();
+    return result as TypeSpecies[]
   }
-  static getUsers = (): string => {
+  
+  static validateLogin = async ({ data }: { data: typeuserSchema }) => {
     const query = `
-    SELECT * FROM usuarios;
-    `;
-    const result: object = db.prepare(query).all();
-    return JSON.stringify(result);
-  }
-
-  static updateTables = (): string => {
-    const query = `
-    BEGIN TRANSACTION;
-    ALTER TABLE usuarios ADD UNIQUE (correo);
-    COMMIT;
-    `;
-    try {
-      db.exec(query)
-      return 'Se actualizaron las tablas'
-    } catch (error: any) {
-      console.error('Error al actualizar tablas:', error.message)
-      db.exec('ROLLBACK;')
-      return `Error al actualizar tablas: ${error.message}`
-    }
+    Select * from usuarios where correo = ? and contraseña = ?
+    `
+    const result = db.prepare(query).get(data.correo, data.contraseña)
+    return result
   }
 
-  static getAllPosts = (): string => {
+
+  static getAllPosts = ()=> {
     const query = `
-    SELECT * FROM avistamientos;
-    `;
-    // Aqui se deberia crear un schema type para result con el tipo de dato que devuelven los posts
-    const result: object = db.prepare(query).all();
-    return JSON.stringify(result);
+    SELECT 
+      u.nombre AS nombre_usuario,
+      e.nombre_cientifico AS especie,
+      ub.latitud,
+      ub.longitud,
+      a.descripcion,
+      a.fecha_avistamiento
+    FROM avistamientos AS a
+    JOIN usuarios AS u ON u.usuario_id = a.usuario_id
+    JOIN especies AS e ON e.especie_id = a.especie_id
+    JOIN ubicaciones AS ub ON ub.ubicacion_id = a.ubicacion_id
+    `
+    const result = db.prepare(query).all();
+    return result as TypeAvistamientos[]
   }
 
   static createUser = ({ data }: { data: typeuserSchema }): string | undefined => {
