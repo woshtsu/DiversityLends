@@ -67,30 +67,30 @@ npm run dev
 
 ## 5. 💫 ENDPOINTS
 
-
+```bash
 GET http://localhost:1234/api/initializeSeed
-
-
+```
+```bash
 // RUTA PARA PROBAR EL SERVIDOR
 GET http://localhost:1234/api/
-
-
+```
+```bash
 // Peticion para conseguir informacion de usuario
 GET http://localhost:1234/api/getuserdata/admin@example.com
 /// PETICION PARA OBTENER LAS ESPECIES
 GET http://localhost:1234/api/getAllspecies
 /// PETICION PARA OBTENER LOS POSTS
 GET http://localhost:1234/api/getAllPosts
-
-
+```
+```bash
 /// POST PARA VALIDAR USUARIO INICIO DE SESION
 POST http://localhost:1234/api/validar
 /// POST PARA HACER UN COMENTARIO
 POST http://localhost:1234/api/post
-
+```
 ---
 ## 6. 🎭 EJEMPLOS
-
+```bash
 http://localhost:1234/api/getuserdata/admin@example.com
 Respuesta:
 {
@@ -99,7 +99,8 @@ Respuesta:
   "correo": "admin@example.com",
   "titulo_biologico": null
 }
-
+```
+```bash
 http://localhost:1234/api/getAllspecies
 Respuesta:
 [
@@ -116,7 +117,8 @@ Respuesta:
     "familia": "Rheidae"
   }
 ]
-
+```
+```bash
 http://localhost:1234/api/getAllPosts
 Respuesta:
 [
@@ -135,7 +137,8 @@ Respuesta:
     "comments": 0
   }
 ]
-
+```
+```bash
 http://localhost:1234/api/validar
 Header:
 Content-Type: application/json
@@ -149,7 +152,8 @@ Respuesta:
 {
   "esUsuario": true
 }
-
+```
+```bash
 http://localhost:1234/api/post
 Header:
 Content-Type: application/json
@@ -165,7 +169,7 @@ Respuesta:
 {
   "isCreated": true
 }
-
+```
 ## 7. Créditos
 
 Ricardo Porras Veli
