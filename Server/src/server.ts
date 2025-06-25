@@ -6,6 +6,7 @@ import cors from 'cors'
 
 const ACCEPTED_ORIGINS = [
   'http://localhost:5173',
+  'http://localhost:3000'
 ]
 
 
@@ -17,22 +18,6 @@ app.use(cors({
   origin: ACCEPTED_ORIGINS,
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
-
-// app.use(cors({
-//   origin: (origin, callback) => {
-//     const allowedOrigin = 'http://localhost:5173';
-
-//     if (!origin || origin === allowedOrigin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('CORS bloqueado: origen no permitido'));
-//     }
-//   },
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
-
-
-
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

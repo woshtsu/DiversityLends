@@ -25,3 +25,17 @@ Content-Type: application/json
 ###
 /// GET PARA OBTENER TODOS LOS AVISTAMIENTOS
 GET http://localhost:1234/api/getAllPosts
+
+### 
+/// POST PARA HACER UN COMENTARIO
+POST http://localhost:1234/api/post
+Content-Type: application/json
+
+{
+  "usuario_id": 1,
+  "especie_id": 1,
+  "descripcion": "Avisté una vicuña cerca del lago",
+  "latitude": -12.050451,
+  "longitude": -75.196454
+}
+
