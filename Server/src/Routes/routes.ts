@@ -30,9 +30,3 @@ routerFA.post('/post', ControllerFA.postAvistamiento)
 routerFA.post('/create', ControllerFA.createUser)
 // Post para crear un avistamiento
 
-
-/*
-  Falta añadir la insercion de categorias en la base de datos
-  falta actualizar los posts
-  Faltan varias cosas para checar
-*/

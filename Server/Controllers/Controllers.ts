@@ -36,6 +36,7 @@ export class ControllerFA {
     if (!filtro.success) {
       return res.status(400).json({ errorMensaje: "Error en las credenciales" })
     }
+    
     const result = await ModelFA.validateLogin({ data: req.body })
     res.json({ esUsuario: result != undefined ? true : false })
   }
@@ -45,7 +46,6 @@ export class ControllerFA {
     try {
       const postDB = await ModelFA.getAllPosts();
 
-      // Mapeamos los datos a la interfaz deseada
       const formattedPosts = postDB.map(post => ({
         id: post.id.toString(),
         content: post.content,

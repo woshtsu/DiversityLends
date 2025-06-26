@@ -79,7 +79,6 @@ export class ModelFA {
   }
 
   static postAvistamiento = async ({ input }: { input: typepostSchema }) => {
-    // 1. Insertar ubicación
     try {
       const insertUbicacion = db.prepare(
         `INSERT INTO ubicaciones (latitud, longitud) VALUES (?, ?)`
